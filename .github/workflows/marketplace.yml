@@ -3,13 +3,23 @@ name: PythonApp
 on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+    # strategy:
+    #   matrix:
+    #     python-version: ["3.8", "3.9", "3.10"]
     steps:
     - name: Check out the code
       uses: actions/checkout@v2
     - name: Python Syntax Checker
       uses: cclauss/Find-Python-syntax-errors-action@v0.2.0
+  build:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps: 
+    - uses: actions@checkout@v2
+    - uses: actions/upload-artifact@v2
+      with:
+        name: hello
+        path: .
+    
