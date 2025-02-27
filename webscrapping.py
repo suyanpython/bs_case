@@ -15,9 +15,9 @@ import re, sys , os
 # Base URL and query parameters
 base_url = "https://www.hellowork.com"
 params_list = [
-    {"lang": "full stack", "city": "aix-en-provence","type":"CDI","page":"1"},
-    {"lang": "fullstack", "city": "aix-en-provence","type":"CDI","page":"1"},
-    {"lang": "python", "city": "aix-en-provence","type":"CDI","page":"1"},
+    {"lang": "developpeur web", "city": "aix-en-provence","type":"CDI","page":"1"},
+    # {"lang": "fullstack", "city": "aix-en-provence","type":"CDI","page":"1"},
+    # {"lang": "python", "city": "aix-en-provence","type":"CDI","page":"1"},
     {"lang": "developpeur web", "city": "marseille","type":"CDI","page":"1"},
 ]
 

@@ -4,15 +4,16 @@ Created on Tue Dec 24 12:05:34 2024
 
 @author: Suyan
 """
-import json, re
+import json, re, os
 from collections import defaultdict
 import matplotlib.pyplot as plt
 
 
 # Keywords with categories, including initial count 0 for each keyword
 keywords = {
-    'Language': [('Python', 0), ('Php', 0), ('Vue.js', 0), ('React', 0), ('Django', 0), ('Symfony', 0), ('Laravel', 0), ('c#', 0), ('c++', 0),('Java', 0)],
-    'Database': [ ('Mongo', 0), ('Redis', 0),('ldap', 0),('mariadb', 0),('rabbit', 0),('Postgre', 0)],
+    'Language': [('Python', 0), ('Php', 0), ('Vue', 0), ('React', 0), ('Django', 0), ('Symfony', 0), ('Laravel', 0), ('c#', 0), ('c++', 0),('Java', 0),('Angular', 0)],
+    'Database': [ ('Mongo', 0), ('Redis', 0),('ldap', 0),('Postgre', 0)],
+    'Others': [ ('Kafka', 0), ('Airflow', 0),('rabbit', 0)],
     'DevOps': [('Linux', 0), ('Kubernetes', 0), ('Docker', 0), ('Aws', 0), ('Azure', 0), ('Ansible', 0), ('Gitlab', 0),('Google Cloud', 0)],
     # 'Location': [('Marseille', 0), ('Aix-en-provence', 0)],
 }
@@ -37,9 +38,14 @@ def highlight(text):
     text = re.sub(r"chez\s+(.*?)\s*, pour", replacer, text)
     return text
 
+
+file_path = "scraped_data.json"
+if not os.path.exists(file_path):
+    print(f"Error: File '{file_path}' not found!")
+
 # Load the JSON data (assuming data.json exists)
-with open('scraped_data.json', 'r') as file:
-    data = json.load(file)
+with open(file_path, "r", encoding="utf-8") as file:
+    data = json.load(file)  # Load JSON properly
 
 
 # Custom sorting function
@@ -294,7 +300,7 @@ html_content += """
 """
 
 # Save the generated HTML to a file
-with open("table.html", "w") as f:
+with open("table.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
 print("HTML table has been generated and saved as 'table.html'.")
