@@ -1,4 +1,4 @@
-# jobofferscrap
+# job offerscrap
 This small tool used
 BeautifulSoup 
 You can also use Scrapy and Selenium
